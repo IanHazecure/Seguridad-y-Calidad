@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +11,16 @@
     <a class="brand" th:href="@{/}">Gamer Events</a>
     <nav>
         <a th:href="@{/events}">Events</a>
-        <a th:href="@{/login}">Login</a>
-        <a th:href="@{/register}">Register</a>
+        <span sec:authorize="isAnonymous()">
+            <a th:href="@{/login}">Login</a>
+            <a th:href="@{/register}">Register</a>
+        </span>
+        <span sec:authorize="isAuthenticated()">
+            <a th:href="@{/profile}">Profile</a>
+            <form th:action="@{/logout}" method="post">
+                <button type="submit">Log out</button>
+            </form>
+        </span>
     </nav>
 </header>
 
