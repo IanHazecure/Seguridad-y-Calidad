@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${formTitle} + ' | Gamer Events'">Event form</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" th:href="@{/}">Gamer Events</a>
+    <nav>
+        <a th:href="@{/events}">Events</a>
+        <a th:href="@{/profile}">My profile</a>
+    </nav>
+</header>
+
+<main class="form-page">
+    <section class="form-container">
+        <h1 th:text="${formTitle}">Event form</h1>
+        <p th:if="${error}" class="form-message" th:text="${error}"></p>
+        <form th:action="@{${formAction}}" method="post">
+            <label for="title">Title</label>
+            <input id="title" name="title" type="text" th:value="${event.title}" required>
+
+            <label for="description">Description</label>
+            <textarea id="description" name="description" required th:text="${event.description}"></textarea>
+
+            <label for="startDate">Start date</label>
+            <input id="startDate" name="startDate" type="datetime-local"
+                   th:value="${event.startDate == null ? '' : #temporals.format(event.startDate, 'yyyy-MM-dd''T''HH:mm')}" required>
+
+            <label for="endDate">End date</label>
+            <input id="endDate" name="endDate" type="datetime-local"
+                   th:value="${event.endDate == null ? '' : #temporals.format(event.endDate, 'yyyy-MM-dd''T''HH:mm')}" required>
+
+            <label for="location">Location</label>
+            <input id="location" name="location" type="text" th:value="${event.location}" required>
+
+            <label for="address">Address</label>
+            <input id="address" name="address" type="text" th:value="${event.address}" required>
+
+            <label for="category">Category</label>
+            <input id="category" name="category" type="text" th:value="${event.category}" required>
+
+            <label for="gameName">Game</label>
+            <input id="gameName" name="gameName" type="text"
+                   th:value="${event.games != null and !event.games.isEmpty() ? event.games.iterator().next().name : ''}" required>
+
+            <label for="platform">Platform</label>
+            <input id="platform" name="platform" type="text"
+                   th:value="${event.games != null and !event.games.isEmpty() ? event.games.iterator().next().platform : ''}" required>
+
+            <label for="organizer">Organizer</label>
+            <input id="organizer" name="organizer" type="text" th:value="${event.organizer}" required>
+
+            <label>
+                <input name="featured" type="checkbox" value="true" th:checked="${event.featured}">
+                Featured event
+            </label>
+            <label>
+                <input name="parkingAvailable" type="checkbox" value="true" th:checked="${event.parkingAvailable}">
+                Parking available
+            </label>
+            <label>
+                <input name="publicTransportAvailable" type="checkbox" value="true" th:checked="${event.publicTransportAvailable}">
+                Public transport available
+            </label>
+
+            <button type="submit">Save event</button>
+        </form>
+    </section>
+</main>
+</body>
+</html>

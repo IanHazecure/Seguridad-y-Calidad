@@ -147,12 +147,32 @@ public class Event {
         this.publicTransportAvailable = publicTransportAvailable;
     }
 
+    public void setFoodServiceAvailable(boolean foodServiceAvailable) {
+        this.foodServiceAvailable = foodServiceAvailable;
+    }
+
+    public boolean isAccommodationAvailable() {
+        return accommodationAvailable;
+    }
+
+    public void setAccommodationAvailable(boolean accommodationAvailable) {
+        this.accommodationAvailable = accommodationAvailable;
+    }
+
     public String getOrganizer() {
         return organizer;
     }
 
     public void setOrganizer(String organizer) {
         this.organizer = organizer;
+    }
+
+    public String getMainSpeakers() {
+        return mainSpeakers;
+    }
+
+    public void setMainSpeakers(String mainSpeakers) {
+        this.mainSpeakers = mainSpeakers;
     }
 
     public User getCreatedBy() {

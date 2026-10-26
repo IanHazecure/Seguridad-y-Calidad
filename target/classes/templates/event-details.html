@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +22,9 @@
     <article>
         <h1 th:text="${event.title}">Event title</h1>
         <p th:text="${event.description}">Event description</p>
+        <p sec:authorize="isAuthenticated()">
+            <a th:href="@{/events/{id}/edit(id=${event.id})}">Edit event</a>
+        </p>
 
         <dl>
             <dt>Category</dt>
