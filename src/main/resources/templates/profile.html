@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My profile | Gamer Events</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" th:href="@{/}">Gamer Events</a>
+    <nav>
+        <a th:href="@{/events}">Events</a>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Log out</button>
+        </form>
+    </nav>
+</header>
+
+<main class="form-page">
+    <section class="form-container">
+        <h1>My profile</h1>
+        <p th:if="${updated}" class="form-message" th:text="${updated}"></p>
+        <p th:text="${user.email}">Email</p>
+
+        <form th:action="@{/profile}" method="post">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" th:value="${profile.username}" required>
+
+            <label for="avatarUrl">Avatar URL</label>
+            <input id="avatarUrl" name="avatarUrl" type="url" th:value="${profile.avatarUrl}">
+
+            <label for="favoriteGames">Favorite games</label>
+            <input id="favoriteGames" name="favoriteGames" type="text" th:value="${profile.favoriteGames}">
+
+            <label>
+                <input name="notificationsEnabled" type="checkbox" value="true"
+                       th:checked="${profile.notificationsEnabled}">
+                Receive notif
+            </label>
+
+            <button type="submit">Save profile</button>
+        </form>
+    </section>
+</main>
+</body>
+</html>
