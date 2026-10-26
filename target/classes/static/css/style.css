@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid;
+}
+
+.site-header nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.brand {
+    font-weight: bold;
+}
+
+.page-content {
+    width: min(100% - 2rem, 1100px);
+    margin: 0 auto;
+}
+
+.intro-section,
+.partners-section {
+    padding: 3rem 0;
+}
+
+.event-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.event-item {
+    padding: 1rem;
+    border: 1px solid;
+}
+
+.button,
+button {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    border: 1px solid;
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+}
+
+.form-page {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+.form-container {
+    width: min(100%, 420px);
+}
+
+.form-container form {
+    display: grid;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+}
+
+.form-container input {
+    padding: 0.6rem;
+    border: 1px solid;
+    font: inherit;
+}
+
+.form-message {
+    padding: 0.75rem;
+    border: 1px solid;
+}
+
+@media (max-width: 600px) {
+    .site-header {
+        display: block;
+    }
+
+    .site-header nav {
+        margin-top: 0.75rem;
+    }
+}

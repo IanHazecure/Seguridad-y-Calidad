@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamer Events</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" th:href="@{/}">Gamer Events</a>
+    <nav>
+        <a th:href="@{/events}">Events</a>
+        <a th:href="@{/login}">Login</a>
+        <a th:href="@{/register}">Register</a>
+    </nav>
+</header>
+
+<main class="page-content">
+    <section class="intro-section">
+        <h1>Proximos eventos</h1>
+        <p>Encuentra torneos cerca de ti.</p>
+        <a class="button" th:href="@{/events}">Browse events</a>
+    </section>
+
+    <section>
+        <h2>Featured events</h2>
+        <div class="event-list">
+            <article class="event-item" th:each="event : ${featuredEvents}">
+                <h3 th:text="${event.title}">Event title</h3>
+                <p th:text="${event.description}">Event description</p>
+                <p th:text="${#temporals.format(event.startDate, 'MMM dd, yyyy')}">Event date</p>
+            </article>
+            <p th:if="${#lists.isEmpty(featuredEvents)}">No vents available.</p>
+        </div>
+    </section>
+
+
+
+    <section>
+        <h2>Upcomingg</h2>
+        <div class="event-list">
+            <article class="event-item" th:each="event : ${upcomingEvents}">
+                <h3 th:text="${event.title}">Event title</h3>
+                <p th:text="${event.location}">Event location</p>
+                <a th:href="@{/events/{id}(id=${event.id})}">View details</a>
+            </article>
+        </div>
+    </section>
+
+
+
+    <section class="partners-section">
+        <h2>Auspiciadores</h2>
+        <p>blank testss</p>
+    </section>
+</main>
+</body>
+</html>
