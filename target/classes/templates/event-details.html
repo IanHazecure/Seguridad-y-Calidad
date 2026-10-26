@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${event.title} + ' | Gamer Events'">Event details</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" th:href="@{/}">Gamer Events</a>
+    <nav>
+        <a th:href="@{/events}">Back to events</a>
+        <a th:href="@{/profile}">My profile</a>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Log out</button>
+        </form>
+    </nav>
+</header>
+
+<main class="page-content">
+    <article>
+        <h1 th:text="${event.title}">Event title</h1>
+        <p th:text="${event.description}">Event description</p>
+
+        <dl>
+            <dt>Category</dt>
+            <dd th:text="${event.category}">Category</dd>
+            <dt>Dates</dt>
+            <dd>
+                <span th:text="${#temporals.format(event.startDate, 'MMM dd, yyyy HH:mm')}">Start date</span>
+                -
+                <span th:text="${#temporals.format(event.endDate, 'MMM dd, yyyy HH:mm')}">End date</span>
+            </dd>
+            <dt>Location</dt>
+            <dd th:text="${event.location}">Location</dd>
+            <dt>Address</dt>
+            <dd th:text="${event.address}">Address</dd>
+            <dt>Organizer</dt>
+            <dd th:text="${event.organizer}">Organizer</dd>
+            <dt>Parking</dt>
+            <dd th:text="${event.parkingAvailable ? 'Available' : 'Not available'}">Parking</dd>
+            <dt>Public transport</dt>
+            <dd th:text="${event.publicTransportAvailable ? 'Available' : 'Not available'}">Transport</dd>
+        </dl>
+
+        <section>
+            <h2>Games</h2>
+            <ul>
+                <li th:each="game : ${event.games}" th:text="${game.name + ' - ' + game.platform}">Game</li>
+            </ul>
+        </section>
+    </article>
+</main>
+</body>
+</html>

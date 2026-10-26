@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | Gamer Events</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" th:href="@{/}">Gamer Events</a>
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/profile}">My profile</a>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Log out</button>
+        </form>
+    </nav>
+</header>
+
+<main class="page-content">
+    <h1>Events</h1>
+
+    <form class="filter-form" th:action="@{/events}" method="get">
+        <label for="category">Category</label>
+        <input id="category" name="category" type="text" th:value="${category}">
+
+        <label for="location">Location</label>
+        <input id="location" name="location" type="text" th:value="${location}">
+
+        <label for="from">From</label>
+        <input id="from" name="from" type="date" th:value="${from}">
+
+        <label for="to">To</label>
+        <input id="to" name="to" type="date" th:value="${to}">
+
+        <button type="submit">Search</button>
+        <a th:href="@{/events}">Clear filters</a>
+    </form>
+
+    <section class="event-list">
+        <article class="event-item" th:each="event : ${events}">
+            <h2 th:text="${event.title}">Event title</h2>
+            <p th:text="${event.description}">Event description</p>
+            <p th:text="${event.location}">Event location</p>
+            <p th:text="${#temporals.format(event.startDate, 'MMM dd, yyyy HH:mm')}">Event date</p>
+            <a th:href="@{/events/{id}(id=${event.id})}">View details</a>
+        </article>
+        <p th:if="${#lists.isEmpty(events)}">No events match your filters.</p>
+    </section>
+</main>
+</body>
+</html>
