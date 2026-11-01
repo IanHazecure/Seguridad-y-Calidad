@@ -15,6 +15,11 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
     List<Event> findByFeaturedTrueOrderByStartDateAsc();
 
+    Optional<Event> findByTitle(String title);
+
+    @Query("select distinct e from Event e left join fetch e.games where e.title = :title")
+    Optional<Event> findByTitleWithGames(@Param("title") String title);
+
     @Query("select distinct e from Event e left join fetch e.games order by e.startDate asc")
     List<Event> findAllDetailedByOrderByStartDateAsc();
 

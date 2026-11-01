@@ -39,24 +39,26 @@ public class DataInitializer {
                     .orElseGet(() -> gameRepository.save(
                             new Game("Super Smash Bros. Melee", "Nintendo GameCube")));
 
-            if (eventRepository.count() == 0) {
-                Event event = new Event(
-                        "Zenkoku Taikai 5: Ultimate Chapter",
-                        "Super Smash Bros. Melee tournament.",
-                        LocalDateTime.of(2027, 1, 30, 9, 0),
-                        LocalDateTime.of(2027, 1, 31, 18, 0),
-                        "Chile",
-                        "Av. Pedro de Valdivia 164, Providencia",
-                        "Tournament"
-                );
-                event.setFeatured(true);
-                event.setParkingAvailable(true);
-                event.setPublicTransportAvailable(true);
-                event.setOrganizer("Zenkoku Taikai Team");
-                event.setCreatedBy(thirdUser);
-                event.getGames().add(melee);
-                eventRepository.save(event);
-            }
+            Event event = eventRepository.findByTitleWithGames("Zenkoku Taikai 5: Ultimate Chapter")
+                    .orElseGet(() -> new Event(
+                            "Zenkoku Taikai 5: Ultimate Chapter",
+                            "Super Smash Bros. Melee tournament.",
+                            LocalDateTime.of(2027, 1, 30, 9, 0),
+                            LocalDateTime.of(2027, 1, 31, 18, 0),
+                            "Chile",
+                            "Av. Pedro de Valdivia 164, Providencia",
+                            "Tournament"
+                    ));
+            event.setFeatured(true);
+            event.setParkingAvailable(true);
+            event.setPublicTransportAvailable(true);
+            event.setFoodServiceAvailable(true);
+            event.setAccommodationAvailable(true);
+            event.setOrganizer("Zenkoku Taikai Team");
+            event.setMainSpeakers("Top Super Smash Bros. Melee players and community commentators");
+            event.setCreatedBy(thirdUser);
+            event.getGames().add(melee);
+            eventRepository.save(event);
         };
     }
 

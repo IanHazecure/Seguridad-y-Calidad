@@ -45,6 +45,12 @@
             <dd th:text="${event.parkingAvailable ? 'Available' : 'Not available'}">Parking</dd>
             <dt>Public transport</dt>
             <dd th:text="${event.publicTransportAvailable ? 'Available' : 'Not available'}">Transport</dd>
+            <dt>Food service</dt>
+            <dd th:text="${event.foodServiceAvailable ? 'Available' : 'Not available'}">Food service</dd>
+            <dt>Accommodation</dt>
+            <dd th:text="${event.accommodationAvailable ? 'Available' : 'Not available'}">Accommodation</dd>
+            <dt>Main speakers</dt>
+            <dd th:text="${event.mainSpeakers ?: 'To be announced'}">Speakers</dd>
         </dl>
 
         <section>
