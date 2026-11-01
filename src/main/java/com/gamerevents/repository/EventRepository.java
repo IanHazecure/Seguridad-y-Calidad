@@ -15,6 +15,9 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
     List<Event> findByFeaturedTrueOrderByStartDateAsc();
 
+    @Query("select distinct e from Event e left join fetch e.games order by e.startDate asc")
+    List<Event> findAllDetailedByOrderByStartDateAsc();
+
     @Query("select e from Event e "
             + "where (:category is null or lower(e.category) = lower(:category)) "
             + "and (:location is null or lower(e.location) like lower(concat('%', :location, '%'))) "

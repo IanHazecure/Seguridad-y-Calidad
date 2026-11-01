@@ -147,6 +147,10 @@ public class Event {
         this.publicTransportAvailable = publicTransportAvailable;
     }
 
+    public boolean isFoodServiceAvailable() {
+        return foodServiceAvailable;
+    }
+
     public void setFoodServiceAvailable(boolean foodServiceAvailable) {
         this.foodServiceAvailable = foodServiceAvailable;
     }
