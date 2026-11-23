@@ -75,7 +75,7 @@ classpath:C:\Users\Felipe\.m2\repository\jakarta\validation\jakarta.validation-a
 classpath:C:\Users\Felipe\.m2\repository\org\jboss\logging\jboss-logging\3.6.3.Final\jboss-logging-3.6.3.Final.jar	62672:1792970898413
 classpath:C:\Users\Felipe\.m2\repository\com\fasterxml\classmate\1.8.0\classmate-1.8.0.jar	77322:1795469035708
 classpath:C:\Users\Felipe\.m2\repository\io\jsonwebtoken\jjwt-api\0.13.0\jjwt-api-0.13.0.jar	140754:1795468295963
-classpath:C:\Users\Felipe\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.19.3\jackson-annotations-2.19.3.jar	79309:1795468296581
+classpath:C:\Users\Felipe\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.21\jackson-annotations-2.21.jar	82104:1792970896442
 classpath:C:\Users\Felipe\.m2\repository\org\springframework\spring-core\7.1.0\spring-core-7.1.0.jar	2076285:1795096516000
 classpath:C:\Users\Felipe\.m2\repository\commons-logging\commons-logging\1.4.0\commons-logging-1.4.0.jar	75828:1781210967000
 classpath:C:\Users\Felipe\.m2\repository\org\jspecify\jspecify\1.0.1\jspecify-1.0.1.jar	3064:1792970903153

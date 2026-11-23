@@ -18,7 +18,6 @@
 
     <properties>
         <java.version>17</java.version>
-        <jackson.version>2.19.3</jackson.version>
         <log4j2.version>2.24.3</log4j2.version>
         <tomcat.version>10.1.47</tomcat.version>
         <thymeleaf.version>3.1.7.RELEASE</thymeleaf.version>
@@ -29,21 +28,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-core</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-annotations</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-api</artifactId>
